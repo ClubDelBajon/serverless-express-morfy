@@ -1,10 +1,10 @@
-name: express
+name: serverless-express-morfy
 version: 3.0.1
-author: eahefnawy
-org: serverlessinc
+author: morfy
+org: morfy
 description: Deploys a serverless Express.js application onto AWS Lambda and AWS HTTP API.
 keywords: aws, serverless, express
-repo: https://github.com/serverless-components/express
+repo: https://github.com/ClubDelBajon/serverless-express-morfy
 license: MIT
 main: ./src
 
@@ -57,6 +57,15 @@ actions:
       description:
         type: string
         description: A description of your application.
+
+      runtime:
+        type: string
+        description: Nodejs runtime version.
+        default: nodejs16.x
+        allow:
+          - nodejs14.x
+          - nodejs16.x
+          - nodejs18.x
 
       region:
         type: string

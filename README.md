@@ -97,6 +97,7 @@ inputs:
   src: ./                        # (optional) path to the source folder. default is a hello world app.
   memory: 512                    # (optional) lambda memory size.
   timeout: 10                    # (optional) lambda timeout.
+  runtime: nodejs16.x            # (optional) nodejs version runtime. By default is nodejs16.x
   description: My Express App    # (optional) lambda & api gateway description.
   env:                           # (optional) env vars.
     DEBUG: 'express:*'           #            this express specific env var will print express debug logs.
@@ -246,3 +247,23 @@ app.use(function (req, res, next) {
 If you run into a CORS issue, ensure you are setting up your Express app to return the right headers, like above.
 
 THe biggest reason why CORS errors can happen is because users do not capture errors correctly, and then return a correct HTTP response (with the headers above) in that error response.  It may look like a CORS error, but actually, your code is crashing and the automatic error response from HTTP API does not contain the CORS headers.
+
+
+### Publish your own package of this plugin
+
+If you want to use this plugin with your serverless account you must follow the steps below:
+
+1. Login with your serverless credentials
+```
+serverless login
+```
+2. Change `serverless.component.yml` file:
+```
+name: The name of your serverless package
+org: Serverless account from step 1
+repo: The repository of your serverless package
+```
+3. Publish your package
+```
+serverless publish
+```

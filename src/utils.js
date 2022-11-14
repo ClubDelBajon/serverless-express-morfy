@@ -294,7 +294,7 @@ const createLambda = async (instance, inputs, clients, retries = 0) => {
     MemorySize: inputs.memory || 1536,
     Publish: true,
     Role: instance.state.userRoleArn || instance.state.defaultLambdaRoleArn, // Default to automatically created role
-    Runtime: 'nodejs12.x',
+    Runtime: inputs.runtime || 'nodejs16.x',
     Timeout: inputs.timeout || 29, // Meet the APIG timeout limit, don't exceed it
     Environment: {
       Variables: inputs.env || {},
@@ -409,7 +409,7 @@ const updateLambdaConfig = async (instance, inputs, clients) => {
     Role: instance.state.userRoleArn || instance.state.defaultLambdaRoleArn, // Default to auto-create role
     Timeout: inputs.timeout || 29, // Meet APIG timeout limit, don't exceed it
     Handler: instance.state.handler,
-    Runtime: 'nodejs12.x',
+    Runtime: inputs.runtime || 'nodejs16.x',
     Environment: {
       Variables: inputs.env || {},
     },
